@@ -11,12 +11,14 @@ import com.iblogstreet.basecontructor.R;
 import com.iblogstreet.basecontructor.activity.network.MulDownActivity;
 import com.iblogstreet.basecontructor.activity.network.NetSourcecodeActivity;
 import com.iblogstreet.basecontructor.activity.network.NetworkNewsActivity;
+import com.iblogstreet.basecontructor.activity.sendmessage.SendMessageActivity;
 
 /**
  * Created by Administrator on 2016/3/16.
  */
 public class layout_function_total extends Activity implements View.OnClickListener {
     Button button_network_watcher,button_network_news,button_mul_down;
+    Button button_send_message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class layout_function_total extends Activity implements View.OnClickListe
         button_network_watcher=(Button)findViewById(R.id.button_network_watcher);
         button_network_news=(Button)findViewById(R.id.button_network_news);
         button_mul_down=(Button)findViewById(R.id.button_mul_down);
+        button_send_message=(Button)findViewById(R.id.button_send_message);
     }
 
     private void iniListener() {
@@ -36,6 +39,7 @@ public class layout_function_total extends Activity implements View.OnClickListe
         button_network_watcher.setOnClickListener(this);
         button_network_news.setOnClickListener(this);
         button_mul_down.setOnClickListener(this);
+        button_send_message.setOnClickListener(this);
     }
 
     private void iniValues() {
@@ -60,6 +64,11 @@ public class layout_function_total extends Activity implements View.OnClickListe
             case R.id.button_mul_down:
                 intent.setClass(layout_function_total.this, MulDownActivity.class);
                 Toast.makeText(layout_function_total.this, "MulDownActivity", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                break;
+            case R.id.button_send_message:
+                intent.setClass(layout_function_total.this, SendMessageActivity.class);
+                Toast.makeText(layout_function_total.this, "SendMessageActivity", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 break;
             default:

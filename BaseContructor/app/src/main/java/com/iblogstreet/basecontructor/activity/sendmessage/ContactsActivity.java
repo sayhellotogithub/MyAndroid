@@ -20,6 +20,8 @@ public class ContactsActivity extends Activity implements AdapterView.OnItemClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        
         setContentView(R.layout.layout_sendmessage_list);
         iniView();
         iniListener();
