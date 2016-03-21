@@ -14,5 +14,8 @@
     <string name="button_little_game">小游戏</string>
     <string name="tip_url">请输入URL</string>
     <string name="button_network_watcher">网络源码查看器</string>
+    <string name="button_choose_phone">选择手机号码</string>
+    <string name="button_choose_message">选择发送内容</string>
+
     <string name="title_activity_layout_total">layout_total</string>
 </resources>

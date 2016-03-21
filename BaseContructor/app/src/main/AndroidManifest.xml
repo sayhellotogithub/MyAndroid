@@ -8,6 +8,34 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- Activity 一共有以下四种 launchMode：standard、singleTop、singleTask、singleInstance
+      standard 启动模式，不管有没有已存在的实例，都生成新的实例。
+      singleTop 启动模式，如果发现有对应的 Activity 实例正位于栈顶，则重复利用，不再生成新的实例。
+      singleTask 模式，如果发现有对应的 Activity 实例，则使此 Activity 实例之上的其他 Activity 实
+例统统出栈，使此 Activity 实例成为栈顶对象，显示到屏幕前
+singleInstance这种启动模式比较特殊，因为它会启用一个新的栈结构，将 Activity 放置于这个新的栈结构中，并保
+证不再有其他 Activity 实例进入-->
+        <!--
+        横竖屏切换时 Activity 的生命周期
+        Android 手机在横竖屏切换时，默认情况下会把 Activity 先销毁再创建，其生命周期如图 1-14。模拟
+器横竖屏切换的快捷键是 Ctrl+F11。
+不让 Activity 在横竖屏切换时销
+毁，只需要在清单文件声明 Activity 时配置<activity>节点的几个属性即可，其方式如下：
+   4.0 以下版本 android:configChanges="orientation|keyboardHidden"
+   4.0 以上版本 android:configChanges="orientation|keyboardHidden|screenSize" -->
+        <!--
+        固定 Activity 的方向
+        1、通过配置文件
+在 AndroidManifest.xml 中的 activity 节点中添加如下属性。
+android:screenOrientation="portrait"
+该属性通常有两个常量值，portrait：垂直方向，landscape：水平方向。
+    2、通过代码
+    在 Activity 的 onCreate 方法中执行如下方法
+    //垂直方向
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    //水平方向
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        -->
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
@@ -55,7 +83,33 @@
             android:label="@string/title_activity_layout_total"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".activity.network.MulDownActivity"></activity>
+        <activity
+            android:name=".activity.sendmessage.ContactsActivity"
+            android:label="@string/title_activity_layout_total"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.sendmessage.ContentActivity"
+            android:label="@string/title_activity_layout_total"
 
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.sendmessage.SendMessageActivity"
+            android:label="@string/title_activity_layout_total"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--广播接收者 -->
+        <!-- IP播号-->
+        <receiver android:name=".broadcast.IPCallerReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"></action>
+            </intent-filter>
+        </receiver>
+        <!--短信接收者 -->
+        <receiver android:name=".broadcast.SmsListenerReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_Receiver">
+                </action>
+            </intent-filter>
+        </receiver>
         <uses-library android:name="android.test.runner">
 
 
@@ -67,13 +121,18 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
     </application>
+
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="com.iblogstreet.basecontructor.junit_test"></instrumentation>
     <!-- 权限配制开始-->
     <!-- 网络权限配制开始-->
     <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- 网络权限配制结束-->
+    <!-- 允许应用程序监听、控制、取消呼出电话的权限开始-->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!--允许应用程序监听、控制、取消呼出电话的权限结束 -->
+    <!--短信接收者 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <!-- 权限配制结束-->
 </manifest>
