@@ -38,5 +38,13 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         />
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/button_effect"
+            android:text="特效集合"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            />
+
     </LinearLayout>
 </LinearLayout>
