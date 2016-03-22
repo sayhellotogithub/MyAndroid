@@ -97,6 +97,8 @@ android:screenOrientation="portrait"
             android:label="@string/title_activity_layout_total"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--广播接收者 -->
+        <!-- BroadCastReceiver 的注册方式有两种：1、静态注册（就是通过 AndroidManifest.xml 注册）2、动态注
+册（就是通过代码注册）-->
         <!-- IP播号-->
         <receiver android:name=".broadcast.IPCallerReceiver">
             <intent-filter>
@@ -110,6 +112,41 @@ android:screenOrientation="portrait"
                 </action>
             </intent-filter>
         </receiver>
+        <!-- 包的监听 -->
+        <receiver android:name=".broadcast.PackageStateReceiver">
+            <intent-filter>
+                <data android:scheme="package"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- 自定义无序广播-->
+        <receiver android:name=".broadcast.DisorderReceiver">
+            <intent-filter>
+                <action android:name="com.iblogstreet.disorderbroadcast"></action>
+            </intent-filter>
+        </receiver>
+        <!--自定义有序广播-->
+        <receiver android:name=".broadcast.OrderReceiver">
+            <intent-filter android:priority="300">
+                <action android:name="com.iblogstreet.orderbroadcast"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.OrderReceiverOne">
+            <intent-filter android:priority="400">
+                <action android:name="com.iblogstreet.orderbroadcast"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.OrderReceiverTwo">
+            <intent-filter android:priority="400">
+                <action android:name="com.iblogstreet.orderbroadcast"></action>
+            </intent-filter>
+        </receiver>
+        <!--服务 -->
+        <!-- 注册 Service-->
+        <service android:name=".Service.CallListenerService"/>
+
         <uses-library android:name="android.test.runner">
 
 
@@ -134,5 +171,11 @@ android:screenOrientation="portrait"
     <!--允许应用程序监听、控制、取消呼出电话的权限结束 -->
     <!--短信接收者 -->
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <!--写外存的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--录音的权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!--读取电话状态的权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!-- 权限配制结束-->
 </manifest>

@@ -21,7 +21,7 @@ public class ContactsActivity extends Activity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        
+
         setContentView(R.layout.layout_sendmessage_list);
         iniView();
         iniListener();

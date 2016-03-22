@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import com.iblogstreet.basecontructor.R;
 
+/**
+ * 网页与APP端交互
+ * */
 public class MyActivity extends Activity {
     /**
      * Called when the activity is first created.
@@ -49,7 +52,6 @@ public class MyActivity extends Activity {
 
         mWebView.addJavascriptInterface(new DemoJavaScriptInterface(), "asdasd");
         mWebView.addJavascriptInterface(new myHellowWorld(),"my");
-
         mWebView.loadUrl("file:///android_asset/main.html");
     }
 

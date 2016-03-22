@@ -44,8 +44,35 @@
             />
         <Button
             android:layout_height="wrap_content"
-            android:id="@+id/button_send"
-            android:text="发送短信1"
+            android:id="@+id/button_send_broadcast"
+            android:text="发送无序广播"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/button_send_broadcast_order"
+            android:text="发送有序广播"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/button_phone_watch"
+            android:text="开启电话监听器"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/button_phone_watch_close"
+            android:text="关掉电话监听器"
             android:layout_width="0dp"
             android:layout_weight="1"
             />
