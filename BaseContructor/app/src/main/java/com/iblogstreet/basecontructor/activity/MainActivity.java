@@ -12,6 +12,7 @@ import com.iblogstreet.basecontructor.R;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     Button button_function,button_layout,button_roll_game;
+    Button button_effect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         button_function.setOnClickListener(this);
         button_layout.setOnClickListener(this);
         button_roll_game.setOnClickListener(this);
+        button_effect.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -50,6 +52,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Toast.makeText(MainActivity.this,"button_roll_game",Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(MainActivity.this,ListViewActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.button_effect:
+
+                break;
             default:
                 Toast.makeText(MainActivity.this,"default",Toast.LENGTH_LONG).show();
                 break;
